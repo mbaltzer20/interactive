@@ -1,0 +1,26 @@
+
+div
+{
+	color:DarkBlue;
+	background: AliceBlue;
+	font-family: georgia;
+	display: inline-block;
+	width: 30vw;
+	padding:20pt;
+	padding-top: 0pt;
+	margin: 20pt;
+	font-size:20px;
+	float:right;
+}
+
+div#performance:hover
+{
+	
+
+}
+
+div#flower:hover
+{
+	
+
+}
