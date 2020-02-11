@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Laundry Room 22</title>
+	<link rel="stylesheet" type="text/css" href="navigation.css">
+</head>
+<body>
+	<style type="text/css">
+
+		
+		
+		div.big{
+			top:10vh;
+			position: relative;
+			font-family: sans-serif;
+			text-transform: uppercase;
+			text-align: center;
+			color: white;
+		}
+
+		div.static{
+			left: 48vw;
+			width: 200pt;
+			background-color: black;
+			position: relative;
+			font-family: sans-serif;
+			text-transform: uppercase;
+			text-align: center;
+			color: white;
+
+		}
+		div.move{
+			width: 90pt;
+			left: 20vw;
+			animation-name: move;
+			animation-duration: 10s;
+			animation-iteration-count: infinite;
+			position: relative;
+			font-family: sans-serif;
+			text-transform: uppercase;
+			text-align: center;
+			color: white;
+		}
+
+		@keyframes move{
+			0%{left:37vw;background-color: brown;}
+			30%{background-color: blue;}
+			50%{left:70vw; background-color: blue;}
+			80%{background-color: brown}
+			100%{left:37vw; background-color: brown;}
+		}
+	</style>
+
+
+<div class = "big">
+	<div class = "static">washer</div>
+	<div class = "move">blue sock</div>
+	<div class = "static">dryer</div>
+	<div class = "move">grey sock</div>
+	<div class = "static">door</div>
+	<div class = "move">white sock</div>
+	<div class = "static">button</div>
+	<div class = "move">underwear</div>
+	<div class = "static">handle</div>
+	<div class = "move">jeans</div>
+	<div class = "static">timer</div>
+	<div class = "move">zipper</div>
+	<div class = "static">bin</div>
+	<div class = "move">water</div>
+	<div class = "static">cart</div>
+	<div class = "move">button</div>
+	<div class = "static">basket</div>
+	<div class = "move">air</div>
+	<div class = "static">bag</div>
+	<div class = "move">detergent</div>
+	<div class = "static">pipe</div>
+	<div class = "move">suds</div>
+	<div class = "static">dust</div>
+	<div class = "move">fluff</div>
+	<div class = "static">poster</div>
+	<div class = "move">dryer sheet</div>
+	<div class = "static">lint</div>
+	<div class = "move">sweater</div>
+</div>
+<!--Navigational system -->
+
+    <div class = "container" id = "home">
+      <a class= "machine" href="index.html"></a>
+    </div>
+    <div class = "container" id = "next">
+      <a class= "machine" href="list_23.html"></a>
+    </div>
+
+    <div class = "container" id = "previous">
+      <a class= "machine" href="list_21.html"></a>
+    </div>
+    
+    <!--List content w/ restrictions -->
+
+</body>
+</html>

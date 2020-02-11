@@ -1,34 +1,201 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>The List</title>
+	<title>The Laundry Room</title>
 	<link rel="stylesheet" type="text/css" href="../assets/main.css">
 </head>
 <body>
-	<h1>The Laundry Room</h1>
+	<style type="text/css">
 
-	<ol>
-		<li><a href="list_1.html">Spread</a></li>
-		<li><a href="list_2.html">Bundle</a></li>
-		<li><a href="list_3.html">Wave</a></li>
-		<li><a href="list_4.html">Lose</a></li>
-		<li><a href="list_5.html">Discard</a></li>
-		<li><a href="list_6.html">Navigate</a></li>
-		<li><a href="list_7.html">Cycle</a></li>
-		<li><a href="list_8.html">Flow</a></li>
-		<li><a href="list_9.html">Separate</a></li>
-		<li><a href="list_10.html">Cover</a></li>
-		<li><a href="list_11.html">Pile</a></li>
-		<li><a href="list_12.html">Contain</a></li>
-		<li><a href="list_13.html">Pipe</a></li>
-		<li><a href="list_14.html">Change</a></li>
-		<li><a href="list_15.html">Process</a></li>
-		<li><a href="list_16.html">Bounce</a></li>
-		<li><a href="list_17.html">Dissolve</a></li>
-		<li><a href="list_18.html">Vary</a></li>
-		<li><a href="list_19.html">Machines</a></li>
-		<li><a href="list_20.html">Water</a></li>
-	</ol>
+		div.big{
+			position: relative;
+			top: 40vh;
+			left: 40vh;
 
+		}
+		.dot{
+			position: relative;
+			display: inline-block;
+			
+			
+			margin: 20px;
+			
+		}
+		div#a:hover{
+			background-color: rgba(0, 183, 255, 1);
+		}
+
+		div#b:hover{
+			background-color: rgba(0, 183, 255, 0.6);
+		}
+
+		div#c:hover{
+			background-color: rgba(0, 183, 255, 0.4);
+		}
+
+		div#d:hover{
+			background-color: rgba(0, 183, 255, 0.2);
+		}
+
+		div#e:hover{
+			background-color: rgba(0, 183, 255, 0);
+		}
+
+		.drop-content {
+			display: none;
+			position: absolute;
+			min-width: 100%;
+			z-index: 1;
+			
+		}
+
+		.drop-content a{
+			display: block;
+			text-decoration: none;
+			padding-left:25px;
+
+		}
+
+		span.dot:hover .drop-content{
+			display: block;
+		}
+
+
+
+
+
+
+
+
+		div.title{
+			height: 100px;
+			width: 100px;
+			border-style: solid;
+			border-radius: 50%;
+			
+			
+		}
+
+		.title p{
+			position: relative;
+			text-align: center;
+			top: 25px;
+		}
+
+
+
+	</style>
+	
+
+	<div class = "big">
+	<span class = "dot" >
+		<div class ="title" id = "a"><p>Level 1</p></div>
+		<div class ="drop-content">
+			<a href="list_1.html">Spread</a>
+			<a href="list_2.html">Bundle</a>
+			<a href="list_3.html">Wave</a>
+			<a href="list_4.html">Lose</a>
+			<a href="list_5.html">Discard</a>
+		</div>
+	</span>
+	<span class = "dot" >
+		<div class ="title" id = "b"><p>Level 2</p></div>
+		<div class ="drop-content">
+			<a href="list_6.html">Navigate</a>
+			<a href="list_7.html">Cycle</a>
+			<a href="list_8.html">Flow</a>
+			<a href="list_9.html">Separate</a>
+			<a href="list_10.html">Cover</a>
+		</div>
+	</span>
+	<span class = "dot" >
+		<div class ="title" id = "c"><p>Level 3</p></div>
+		<div class ="drop-content">
+			<a href="list_11.html">Pile</a>
+			<a href="list_12.html">Contain</a>
+			<a href="list_13.html">Pipe</a>
+			<a href="list_14.html">Change</a>
+			<a href="list_15.html">Process</a>
+		</div>
+	</span>
+	<span class = "dot" >
+		<div class ="title" id = "d"><p>Level 4</p></div>
+		<div class ="drop-content">
+			<a href="list_16.html">Bounce</a>
+			<a href="list_17.html">Dissolve</a>
+			<a href="list_18.html">Vary</a>
+			<a href="list_19.html">Machines</a>
+			<a href="list_20.html">Water</a>
+		</div>
+	</span>
+	<span class = "dot" >
+		<div class ="title" id = "e"><p>Level 5</p></div>
+		<div class ="drop-content">
+			<a href="list_21.html">Tumble</a>
+			<a href="list_22.html">Transition</a>
+			<a href="list_23.html">Stack</a>
+			<a href="list_24.html">Pull</a>
+			<a href="list_25.html">Reveal</a>
+		</div>
+	</span>
+	</div>
+
+	
+
+	<style type="text/css">
+		div.key{
+			position: fixed;
+			font-size: 9pt;
+			border:solid;
+			width: 40pt;
+			height: 40pt;
+			text-align: center;
+		}
+
+		p.label{
+			line-height: 20pt;
+			color: white;
+
+			
+		}
+
+		div#next{
+			top: 0px;
+			right: 0px;
+			border-top-style: none;
+			border-right-style: none;
+			background-color: white;
+
+		}
+
+		div#next p{
+			color: black;
+		}
+
+		div#previous p{
+			color: black;
+		}
+		div#previous{
+			top: 0px;
+			left: 0px;
+			border-top-style: none;
+			border-left-style: none;
+			background-color: rgba(0, 183, 255, 1);
+		}
+		div#home{
+			bottom: 0px;
+			left: 0px;
+			border-bottom-style: none;
+			border-left-style: none;
+			background-color: black;
+		}
+
+	</style>
+	<div class = "key" id = "next"><p class ="label">next</p></div>
+	<div class = "key" id = "previous"><p class ="label">previous</p></div>
+	<div class = "key" id = "home"><p class ="label">home</p></div>
+
+
+	
 </body>
 </html>
