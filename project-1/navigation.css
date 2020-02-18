@@ -8,7 +8,34 @@
 				background-color: white;
 				border-width: 1.5px;
 				
+				
 			}
+
+			div.container:hover{
+				width: 50px;
+				height: 50px;
+				transition: width 0.5s, height 0.5s;
+
+			}
+
+			div.container:hover a.machine{
+				width: 33px;
+				height: 33px;
+				margin: 6.7px;
+				transition: width 0.5s, height 0.5s, margin 0.5s;
+
+			}
+
+			div.container:hover a.machine span.label{
+				display:block;
+			}
+
+			span.label{
+				display: none;
+			}
+
+			
+
 
 			div#home{
 				bottom: 0px;
@@ -37,12 +64,19 @@
 				background-color: rgba(0, 183, 255, 1);
 
 			}
+
+
+
+
+
 			div#next a:hover{
 				background-color: white;
+				height: 
 
 			}
 			div#home a:hover{
 				background-color: black;
+
 
 			}
 
@@ -62,6 +96,8 @@
 				margin: 4px;
 				
 			}
+
+			
 			
 
 			a.machine:link{

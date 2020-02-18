@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Undefined</title>
+</head>
+<body>
+	
+	<style type="text/css">
+		body{
+			overflow: hidden;
+			margin: 0pt;
+		}
+		
+		/*div.circle{
+			border-radius: 50%;
+			width: 200px;
+			height: 200px;
+			background-color: pink;
+			box-shadow: 0px 0px 30px 30px pink ; 
+			position: relative;
+			
+		}*/
+
+		div.flex-container{
+			display: flex;
+			flex-direction: row;
+			background-color: red;
+		}
+
+		div.flex-container > div{
+			width: 25vw;
+			height: 100vh;
+			margin: 0px;
+			background: pink;
+			position: relative;
+		}
+
+		div#a{
+			background-color: rgb(255, 184, 184);
+			animation-name: colorA;
+			animation-duration: 10s;
+			animation-iteration-count: infinite;
+		}
+
+		@keyframes colorA{
+			0%{background-color: rgb(255, 184, 184);}
+			50%{background-color: rgb(255, 255, 184);}
+			100%{background-color: rgb(255, 184, 184);}
+		}
+
+		div#b{
+			background-color: rgb(255, 201, 184);
+		}
+
+		div#c{
+			background-color: rgb(255, 219, 184);
+		}
+
+		div#d{
+			background-color: rgb(255, 237, 184);
+		}
+
+		div.inside-top{
+			position: absolute;
+			width: 100vw;
+			height: 50vh;
+			background-color: white;
+			animation-name: topmove;
+			animation-duration:10s;
+			animation-iteration-count: infinite;
+
+		}
+		@keyframes topmove{
+			0%{height: 50vh;}
+			50%{height: 100vh;}
+			100%{height: 50vh;}
+		}
+
+
+		div.inside-bottom{
+			position: absolute;
+			width: 100vw;
+			height: 50vh;
+			background-color: white;
+			bottom: 0px;
+			animation-name: bottommove;
+			animation-duration:10s;
+			animation-iteration-count: infinite;
+
+		}
+		@keyframes bottommove{
+			0%{height: 50vh;}
+			50%{height: 100vh;}
+			100%{height: 50vh;}
+		}
+		
+
+		div.insideA-top{
+			position: absolute;
+			width: 25vw;
+			height: 50vh;
+			background-color: #ABDAFC;
+			animation-name: topleft;
+			animation-duration:10s;
+			animation-iteration-count: infinite;
+
+		}
+
+		@keyframes topleft{
+			0%{width: 25vw; height: 50vh;}
+			50%{width:0vw; height: 0vh;}
+			100%{width: 25vw; height: 50vh;}
+		}
+
+
+		div.insideB-top{
+			position: absolute;
+			width: 25vw;
+			height: 50vh;
+			background-color: #b8b8ff;
+			bottom: 0px;
+			animation-name: bottomleft;
+			animation-duration:10s;
+			animation-iteration-count: infinite;
+
+		}
+
+		@keyframes bottomleft{
+			0%{width: 25vw; height: 50vh;}
+			50%{width:0vw; height: 0vh;}
+			100%{width: 25vw; height: 50vh;}
+		}
+
+		div.last1{
+			position: absolute;
+			width: 0vw;
+			height: 25vh;
+			
+
+			background-color: white;
+			animation-name: smallermove;
+			animation-duration: 10s;
+			animation-iteration-count: infinite;
+		}
+
+		@keyframes smallermove{
+			0%{width:0vw;}
+			50%{width: 50vw;}
+			100%{width:0vw;}
+		}
+
+		div.last2{
+			position: absolute;
+			width: 50vw;
+			height: 25vh;
+			top: 25vh;
+			background-color: #b8b8ff;
+			animation-name: smallright;
+			animation-duration: 10s;
+			animation-iteration-count: infinite;
+
+			
+		}
+
+		@keyframes smallright{
+			0%{width: 25vw;}
+			50%{width: 0vw;}
+			100%{width:25vw;}
+		}
+
+
+
+
+		
+	</style>
+	<!--<div class = "circle"></div>
+	<div class = "circle" id = "a"></div>
+	<div class = "circle" id = "a"></div>-->
+
+	<div class="flex-container">
+		<div id = "a">
+			<div class = "inside-top">
+				<div class = "insideA-top">
+					<div class = "last1"></div>
+					<div class = "last2"></div>
+				</div>
+			</div>
+			
+		</div>
+		<div id = "b">
+			<div class = "inside-bottom">
+				<div class="insideB-top">
+					<div></div>
+				</div>
+			</div>
+		</div>
+		<div id = "c">
+			<div class = "inside-top">
+				<div class="insideA-top">
+					<div class = "last1"></div>
+					<div class = "last2"></div>
+				</div>
+			</div>
+		</div>
+		<div id = "d">
+			<div class = "inside-bottom">
+				<div class="insideB-top">
+					<div></div>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+	
+
+</body>
+</html>
