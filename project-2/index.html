@@ -2,9 +2,731 @@
 <html>
 <head>
 	<title>The Clock</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-	<h1>Coming soon!</h1>
+
+	<style type="text/css">
+		body{
+			overflow: hidden;
+			
+			margin: 0px;
+
+		}
+
+		div.cloud{
+			position: relative;
+			width: 100vw;
+			height: 100vh;
+			/*border-radius: 50%;
+			background-color: white;*/
+			top: 0vh;
+			display: inline-block;
+			
+
+		}
+
+
+
+		div#first
+		{
+			left: 0vw;
+			/*background-color: yellow;*/
+		}
+
+		div#second
+		{
+			left: -100vw;
+			top: -100vh;
+			/*background-color: red;*/
+		}
+
+		img#cloud0{
+			left: 0%;
+			
+		}
+		img#cloud1{
+			left: 10%;
+			/*top: 50%;*/
+
+		}
+		img#cloud2{
+			left: 20%;
+			/*top: 50%;*/
+			
+
+		}
+
+		img#cloud3{
+			left: 0%;
+			/*top: 50%;*/
+		}
+		img#cloud4{
+			left: 10%;
+			/*top: 50%;*/
+			
+
+		}
+		img#cloud5{
+			left: 20%;
+			/*top: 50%;*/
+		}
+		
+		img.cloudpic{
+
+		}
+
+		div.clock{
+			position: relative;
+
+			top: 0vh;
+			left: 0vw;
+			width: 7vw;
+			height: 8.5vh;
+			z-index: 1;
+			
+			/*background-color: AliceBlue;
+			border-radius: 50%;
+			border-style: solid;
+			border-color: black;
+			transform-origin: top;
+			transform: scaleY(1);
+			transition: transform 10s;*/
+		}
+
+		/*div.clock:hover{
+			transform: scaleY(2);
+
+		}*/
+
+		img.hourglass{
+			position: absolute;
+			width: 100%;
+			top: 0px;
+			left: 0px;
+		}
+
+		div.cloud img{
+			position: absolute;
+			
+		}
+
+		div#seconds{
+			position: absolute;
+			width: 2%;
+			height: 55%;
+			margin: 0pt;
+			background-color: red;
+			top: 20%;
+			left: 50%;
+			transform-origin: bottom;
+		}
+
+		div#minutes{
+			position: absolute;
+			width: 2%;
+			height: 50%;
+			margin:0pt;
+			background-color: black;
+			top: 25%;
+			left: 50%;
+			transform-origin: bottom;
+
+		}
+
+		div#hours{
+			position: absolute;
+			width: 2%;
+			height: 35%;
+			margin: 0pt;
+			background-color: black;
+			top: 41.5%;
+			left: 50%;
+			transform-origin: bottom;
+
+		}
+
+		div.container{
+			position: absolute;
+			bottom: 20%;
+			left: 33%;
+			font-family: helvetica;
+			
+		}
+
+		div.objects{
+			position: relative;
+			height: 100vh;
+			width: 100vw;
+			top: -209vh;
+			z-index: -1;
+
+		}
+
+
+	</style>
+
+	
+	<div class="clock">
+		<img class="hourglass" src = "clock_change.png">
+		<div class="hand" id="seconds"></div>
+		<div class="hand" id="minutes"></div>
+		<div class="hand" id="hours"></div>
+		<!-- <div class="container">time</div> -->
+	</div>
+
+	
+	<div class="cloud" id = "first">
+		<img src="cloud1.png" class="cloudpic1" id = "cloud0">
+		<img src="cloud2.png" class="cloudpic2" id = "cloud1">
+		<img src="cloud3.png" class="cloudpic3" id = "cloud2">
+		<!-- <img src="cloud4.png" class="cloudpic" id = "cloud4"> -->
+	</div>
+
+	<div class="cloud" id = "second">
+		<img src="cloud1.png" class="cloudpic1" id = "cloud3">
+		<img src="cloud2.png" class="cloudpic2" id = "cloud4">
+		<img src="cloud3.png" class="cloudpic3" id = "cloud5">
+		<!-- <img src="cloud4.png" class="cloudpic" id = "cloud8"> -->
+	</div>
+
+	<div class="objects">
+		<!-- <img class="stars" src="stars.png"> -->
+	</div>
+
+	
+
+	<script type="text/javascript">
+
+		var myTime;
+		var movetime;
+		var movetimefast;
+		var sWidth;
+		var cloudtime;
+		var sizes = [40, 60, 70, 50];
+		var pos = [50, 20, 60, 40];
+		// var isNight;
+		var sky;
+		
+
+			function skyColor(skymode)
+		{
+			if(skymode == "AT")
+			{
+				$('body').css({'background-image': 'linear-gradient(rgb(0, 30, 69), rgb(0, 80, 129) 50%)'});
+				sky = skymode;
+
+			}
+			else if(skymode == "NT")
+			{
+				$('body').css({'background-image': 'linear-gradient(rgb(28, 91, 158), rgb(182, 163, 174) 50%)'});
+				sky = skymode;
+
+			}
+			else if(skymode == "CT")
+			{
+				$('body').css({'background-image': 'linear-gradient(rgb(185, 192, 218), rgb(212, 173, 171) 50%)'});
+				sky = skymode;
+
+			}
+			else if(skymode == "DAY")
+			{
+				$('body').css({'background-image': 'linear-gradient(0deg, rgba(255,255,255,1) 50%, rgba(135,206,235,1) 99%)'});
+				sky = skymode;
+
+			}
+			else if(skymode == "NIGHT")
+			{
+				$('body').css({'background-image': 'linear-gradient(0deg, rgba(13,37,79,1) 0%, rgba(1,19,50,1) 50%)'});
+				sky = skymode;
+
+			}
+			else
+			{
+				console.log("sky color error");
+			}
+
+		}
+
+
+		function skychange(hour,minute)
+		{
+			
+			// Astronomical Twilight
+			if((hour == 5) && (minute == 0))
+			{
+				skyColor("AT");
+				$('img.stars').css({'opacity': '0'});
+				
+				
+				
+			}
+			// Nautical Twilight
+			else if((hour == 5) && (minute == 30))
+			{
+				skyColor("NT");
+				
+				
+			}
+			// Civil Twilight
+			else if((hour == 6) && (minute == 0))
+			{
+				skyColor("CT");
+				
+			}
+			// Daylight
+			else if((hour == 6) && (minute == 30))
+			{
+				skyColor("DAY");
+				
+			}
+			// Civil Twilight
+			else if((hour == 18) && (minute == 0))
+			{
+				skyColor("CT");
+				
+			}
+			// Nautical Twilight
+			else if((hour == 18) && (minute == 30))
+			{
+				skyColor("NT");
+				
+			}
+			// Astronomical Twilight
+			else if((hour == 19) && (minute == 0))
+			{
+				skyColor("AT");
+				
+			}
+			// Night
+			else if ((hour == 19) && (minute == 30))
+			{
+				skyColor("NIGHT");
+				$('img.stars').css({'opacity': '0.2'});
+				
+				
+
+
+			}
+
+			nightClouds();
+
+		}
+
+		
+
+		function checkInitialSky(hour,minute)
+		{
+			console.log("hour: " + hour + " minute: " + minute);
+			
+			// Night 
+			if(hour > 19 || hour < 5)
+			{
+				skyColor("NIGHT");
+				$('img.stars').css({'opacity': '0.2'});
+			
+				
+			}
+			else if(hour == 19)
+			{
+				// Astronomical Twilight
+				if(minute <= 29)
+				{
+					skyColor("AT");
+					$('img.stars').css({'opacity': '0'});
+					
+				}
+				// Night
+				else
+				{
+					skyColor("NIGHT");
+					$('img.stars').css({'opacity': '0.2'});
+					
+				}
+			}
+			// Daylight
+			else if (hour > 6)
+			{
+				skyColor("DAY");
+				$('img.stars').css({'opacity': '0'});
+				
+			}
+			else if (hour == 6)
+			{
+				// Civil Twilight
+				if(minute <= 29)
+				{
+					skyColor("CT");
+					$('img.stars').css({'opacity': '0'});
+					
+				}
+				// Daylight
+				else
+				{
+					skyColor("DAY");
+					$('img.stars').css({'opacity': '0'});
+					
+				}
+			}
+			else if (hour == 5)
+			{
+				// Astronomical Twilight
+				if(minute <= 29)
+				{
+					skyColor("AT");
+					$('img.stars').css({'opacity': '0'});
+					
+				}
+				// Nautical Twilight
+				else
+				{
+					skyColor("NT");
+					$('img.stars').css({'opacity': '0'});
+					
+				}
+			}
+			else if (hour == 18)
+			{
+				// Civil Twilight
+				if(minute <= 29)
+				{
+					skyColor("CT");
+					$('img.stars').css({'opacity': '0'});
+					
+				}
+				// Nautical Twilight
+				else
+				{
+					skyColor("NT");
+					$('img.stars').css({'opacity': '0'});
+					
+				}
+			}
+
+			nightClouds();
+
+		}
+
+
+
+		function createTimeString(timedata)
+		{
+			let currentHours = addExtraZeroes(twelveHourClock(timedata.getHours()));
+			let currentMinutes = addExtraZeroes(timedata.getMinutes());
+			let currentSeconds = addExtraZeroes(timedata.getSeconds());
+			let dateString = currentHours + ":" + currentMinutes;
+			$('.container').text(dateString);
+		}
+
+		//function provided by Tim Ripper
+		function addExtraZeroes(minuteOrSecond)
+		{
+			if(minuteOrSecond < 10)
+			{
+				return "0" + minuteOrSecond;
+			}
+			else
+			{
+				return minuteOrSecond;
+			}
+		}
+
+		function twelveHourClock(hour)
+		{
+			if(hour > 12)
+			{
+				return hour - 12;
+			}
+			else if (hour == 0)
+			{
+				return 12;
+			}
+			else
+			{
+				return hour;
+			}
+		}
+
+		function getCurrentTime()
+		{
+			myTime = new Date;
+			createTimeString(myTime);
+			let rotSec = myTime.getSeconds() * 6;
+			let rotMin = myTime.getMinutes() * 6;
+			let rotHour = myTime.getHours() * 30;
+			$('div#seconds').css({'transform': 'rotate(' + rotSec + 'deg)'});
+			$('div#minutes').css({'transform': 'rotate(' + rotMin + 'deg)'});
+			$('div#hours').css({'transform': 'rotate(' + rotHour + 'deg)'});
+			
+		}
+
+		function regularTime()
+		{
+			movetime = setInterval(AdvanceTime, 1000, 1);
+		}
+
+		function fastTime()
+		{
+			movetimefast = setInterval(AdvanceTime, 1, 20);
+		}
+
+		function slowTime()
+		{
+			movetimeslow = setInterval(AdvanceTime, 3000, 1);
+		}
+		
+		function AdvanceTime(num)
+		{
+			myTime.setSeconds(myTime.getSeconds() + num);
+			skychange(myTime.getHours(), myTime.getMinutes());
+			createTimeString(myTime);
+
+			//rotate the clock hands
+			let rotSec = myTime.getSeconds() * 6;
+			let rotMin = myTime.getMinutes() * 6;
+			let rotHour = myTime.getHours() * 30;
+			$('div#seconds').css({'transform': 'rotate(' + rotSec + 'deg)'});
+			$('div#minutes').css({'transform': 'rotate(' + rotMin + 'deg)'});
+			$('div#hours').css({'transform': 'rotate(' + rotHour + 'deg)'});
+		}
+
+
+		// Change the speed of time depending on the if you hover over the clock or cloud
+		function changeTime()
+		{
+			$('div.cloud img').mouseenter(function(){
+				clearInterval(movetime);
+				fastTime();
+				moveCloudsSpeed("fast");
+				console.log("something should have happened");
+
+			}).mouseleave(function(){
+				clearInterval(movetimefast);
+				moveCloudsSpeed("normal");
+				regularTime();
+			});
+
+			$('.clock').mouseenter(function(){
+				clearInterval(movetime);
+				slowTime();
+				moveCloudsSpeed("slow");
+				
+
+				console.log("slow should start");
+			}).mouseleave(function(){
+				clearInterval(movetimeslow);
+				regularTime();
+				moveCloudsSpeed("normal");
+			});
+		}
+
+		function hourglassChange()
+		{
+			$('div.clock').mouseenter(function(){
+				$('img.hourglass').attr("src", "clock_change_white.gif");
+			}).mouseleave(function(){
+				$('img.hourglass').attr("src", "clock_change.png");
+
+			});
+		}
+
+		function moveClouds(cloudgroupA, cloudgroupB)
+		{
+			getDimensions();
+			$('div#first').stop();
+			$('div#second').stop();
+
+			let curpos1 = parseFloat($(cloudgroupA).css("left"));
+			let durUpdate1 = Math.abs(((sWidth - curpos1)/(3 * sWidth)) * cloudtime);
+
+			$(cloudgroupA).animate({
+				left: "100vw"
+			},{ duration: durUpdate1,
+				specialEasing: {left: "linear"},
+				step: function(now,fx){
+					let pos = now - 100;
+					$(cloudgroupB).css("left", pos + "vw");
+				},
+				complete: function(){
+					$(cloudgroupA).css({left:-sWidth});
+					placeClouds(cloudgroupA);
+					moveClouds(cloudgroupB,cloudgroupA);
+
+				}
+			});
+
+
+			
+		}
+
+		function moveCloudsSpeed(mode)
+		{
+
+			if(mode == "normal")
+			{
+				cloudtime = 200000;
+			}
+			else if(mode == "fast")
+			{
+				cloudtime = 1000;
+			}
+			else if(mode == "slow")
+			{
+				cloudtime = 2000000;
+			}
+
+
+			let group1 = parseFloat($('div#first').css("left"));
+			let group2 = parseFloat($('div#second').css("left"));
+
+			if(group1 >= 0)
+			{
+				moveClouds('div#first','div#second');
+				console.log("yellow takes red");
+			}
+			else if(group2 >= 0)
+			{
+				moveClouds('div#second','div#first');
+				console.log("red takes yellow");
+			}
+			else
+			{
+				console.log("error");
+			}
+
+		}
+
+		function getDimensions(){
+			sWidth = window.innerWidth;
+		}
+
+		function placeClouds(group){
+
+			var i;
+			var x;
+			var y;
+			var cPic;
+			for (i = 0; i < 3; i++)
+			{
+				x = Math.floor(Math.random() * 4) + 1;
+				y = Math.floor(Math.random() * 4);
+				z = Math.floor(Math.random() * 4);
+
+				if(sky == "NIGHT")
+				{
+					cPic = "cloudN";
+				}
+				else if (sky == "DAY")
+				{
+					cPic = "cloud";
+				}
+				else if (sky == "AT")
+				{
+					cPic = "cloudA";
+				}
+				else if (sky == "NT")
+				{
+					cPic = "cloudNT";
+				}
+				else if (sky == "CT")
+				{
+					cPic = "cloudCT";
+				}
+				else
+				{
+					console.log("error");
+				}
+				
+
+				if(group == "div#first")
+				{
+					$('img#cloud' + i).attr({
+						src: cPic + x + ".png",
+						class: "cloudpic" + x
+					});
+					$('img#cloud' + i).css({
+						height: sizes[y] + "%",
+						top: pos[z] + "%"
+					});
+
+				}
+				else if(group == "div#second")
+				{
+					$('img#cloud' + (i+3)).attr({
+						src: cPic + x + ".png",
+						class: "cloudpic" + x
+					});
+					$('img#cloud' + (i+3)).css({
+						height: sizes[y] + "%",
+						top: pos[z] + "%"
+					});
+
+				}
+				else
+				{
+					console.log("error");
+				}
+			}
+		}
+
+		function nightClouds()
+		{
+			if(sky == "NIGHT")
+			{
+				$('img.cloudpic1').attr({src: "cloudN1.png"});
+				$('img.cloudpic2').attr({src: "cloudN2.png"});
+				$('img.cloudpic3').attr({src: "cloudN3.png"});
+				$('img.cloudpic4').attr({src: "cloudN4.png"});
+			}
+			else if(sky == "DAY")
+			{
+				$('img.cloudpic1').attr({src: "cloud1.png"});
+				$('img.cloudpic2').attr({src: "cloud2.png"});
+				$('img.cloudpic3').attr({src: "cloud3.png"});
+				$('img.cloudpic4').attr({src: "cloud4.png"});
+			}
+			else if(sky == "AT")
+			{
+				$('img.cloudpic1').attr({src: "cloudA1.png"});
+				$('img.cloudpic2').attr({src: "cloudA2.png"});
+				$('img.cloudpic3').attr({src: "cloudA3.png"});
+				$('img.cloudpic4').attr({src: "cloudA4.png"});
+			}
+			else if(sky == "NT")
+			{
+				$('img.cloudpic1').attr({src: "cloudNT1.png"});
+				$('img.cloudpic2').attr({src: "cloudNT2.png"});
+				$('img.cloudpic3').attr({src: "cloudNT3.png"});
+				$('img.cloudpic4').attr({src: "cloudNT4.png"});
+			}
+			else if(sky == "CT")
+			{
+				$('img.cloudpic1').attr({src: "cloudC1.png"});
+				$('img.cloudpic2').attr({src: "cloudC2.png"});
+				$('img.cloudpic3').attr({src: "cloudC3.png"});
+				$('img.cloudpic4').attr({src: "cloudC4.png"});
+			}
+		}
+
+
+
+		$(document).ready(function(){
+			getCurrentTime();
+			getDimensions();
+			checkInitialSky(myTime.getHours(), myTime.getMinutes());
+			regularTime();
+			changeTime();
+			hourglassChange();
+			placeClouds('div#first');
+			moveCloudsSpeed("normal");
+		});
+
+
+
+
+	</script>
+
+
 
 
 </body>
