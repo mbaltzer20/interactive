@@ -9,8 +9,9 @@
 	<style type="text/css">
 		body{
 			overflow: hidden;
-			
+			background-color: rgba(13,37,79,1);
 			margin: 0px;
+
 
 		}
 
@@ -76,72 +77,71 @@
 
 		}
 
-		div.clock{
-			position: relative;
-
-			top: 0vh;
-			left: 0vw;
-			width: 7vw;
-			height: 8.5vh;
-			z-index: 1;
-			
-			/*background-color: AliceBlue;
-			border-radius: 50%;
-			border-style: solid;
-			border-color: black;
-			transform-origin: top;
-			transform: scaleY(1);
-			transition: transform 10s;*/
-		}
-
-		/*div.clock:hover{
-			transform: scaleY(2);
-
-		}*/
-
-		img.hourglass{
-			position: absolute;
-			width: 100%;
-			top: 0px;
-			left: 0px;
-		}
-
 		div.cloud img{
 			position: absolute;
 			
 		}
 
-		div#seconds{
+		div.clock{
+			position: relative;
+			/*background-color: white;*/
+
+			top: 0vh;
+			left: 0vw;
+			width: 10vw;
+			height: 10vh;
+			z-index: 1;
+		}
+
+		div#bar
+		{
+			width: 100%;
+			height: 100vh;
+			background-color: white;
+		}
+
+
+		img.hourglass{
 			position: absolute;
-			width: 2%;
-			height: 55%;
-			margin: 0pt;
-			background-color: red;
+			width: 100%;
 			top: 20%;
-			left: 50%;
-			transform-origin: bottom;
+			left: 0%;
 		}
 
-		div#minutes{
+		img#seconds{
 			position: absolute;
-			width: 2%;
-			height: 50%;
-			margin:0pt;
-			background-color: black;
-			top: 25%;
-			left: 50%;
-			transform-origin: bottom;
-
-		}
-
-		div#hours{
-			position: absolute;
-			width: 2%;
-			height: 35%;
+			width: 7%;
+			/*height: 55%;*/
 			margin: 0pt;
-			background-color: black;
-			top: 41.5%;
-			left: 50%;
+			/*background-color: red;*/
+			/*top: 20%;*/
+			left: 46%;
+			top: 32%;
+			transform-origin: bottom;
+		}
+
+		img#minutes{
+			position: absolute;
+			width: 7%;
+			/*height: 50%;*/
+			margin: 0pt;
+			/*background-color: black;*/
+			/*top: 25%;*/
+			left: 46%;
+			top: 32%;
+			transform-origin: bottom;
+
+		}
+
+		img#hours{
+			position: absolute;
+			width: 7%; 
+			/*height: 35%;*/
+			margin: 0pt;
+			/*background-color: black;*/
+			/*top: 41.5%;*/
+			left: 46%;
+			top: 32%;
 			transform-origin: bottom;
 
 		}
@@ -156,22 +156,52 @@
 
 		div.objects{
 			position: relative;
-			height: 100vh;
+			height: 102vh;
 			width: 100vw;
-			top: -209vh;
-			z-index: -1;
+			top: -212vh;
+			z-index: 0;
+			background-color: white;
+			opacity: 0;
 
 		}
+
+		/*img#ufo
+		{
+			position: absolute;
+			height: 20%;
+			left: 80%;
+			opacity: 0;
+		}
+
+		img#moon
+		{
+			position: absolute;
+			height: 50%;
+			left: 20%;
+			top: 20%;
+			opacity: 0;
+		}*/
+
+		div.area{
+			position: relative;
+			width: 100vw;
+			height: 50vh;
+			top: -270vh;
+			/*background-color: red;*/
+		}
+
+
 
 
 	</style>
 
 	
 	<div class="clock">
-		<img class="hourglass" src = "clock_change.png">
-		<div class="hand" id="seconds"></div>
-		<div class="hand" id="minutes"></div>
-		<div class="hand" id="hours"></div>
+		<img class="hourglass" src = "clock.png">
+		<img src="seconds.png" class="hand" id="seconds">
+		<img src="minutes.png" class="hand" id="minutes">
+		<img src="hours.png" class="hand" id="hours">
+		<div id="bar"></div>
 		<!-- <div class="container">time</div> -->
 	</div>
 
@@ -191,8 +221,11 @@
 	</div>
 
 	<div class="objects">
-		<!-- <img class="stars" src="stars.png"> -->
+		<!-- <img class="fastEvent" src="ufo.png" id="ufo">
+		<img class ="fastEvent" src="moon.png" id="moon"> -->
 	</div>
+
+	<div class="area"></div>
 
 	
 
@@ -201,12 +234,16 @@
 		var myTime;
 		var movetime;
 		var movetimefast;
+		var movetimeslow;
 		var sWidth;
 		var cloudtime;
 		var sizes = [40, 60, 70, 50];
 		var pos = [50, 20, 60, 40];
-		// var isNight;
-		var sky;
+		var isNight;
+		var objs = $('.fastEvent').get();
+		var frenzy;
+		var choice;
+		// var sky;
 		
 
 			function skyColor(skymode)
@@ -214,31 +251,36 @@
 			if(skymode == "AT")
 			{
 				$('body').css({'background-image': 'linear-gradient(rgb(0, 30, 69), rgb(0, 80, 129) 50%)'});
-				sky = skymode;
+				$('div.cloud img').css({'opacity':'0.2'});
+				// sky = skymode;
 
 			}
 			else if(skymode == "NT")
 			{
 				$('body').css({'background-image': 'linear-gradient(rgb(28, 91, 158), rgb(182, 163, 174) 50%)'});
-				sky = skymode;
+				$('div.cloud img').css({'opacity':'0.4'});
+				// sky = skymode;
 
 			}
 			else if(skymode == "CT")
 			{
 				$('body').css({'background-image': 'linear-gradient(rgb(185, 192, 218), rgb(212, 173, 171) 50%)'});
-				sky = skymode;
+				$('div.cloud img').css({'opacity': '0.6'});
+				// sky = skymode;
 
 			}
 			else if(skymode == "DAY")
 			{
 				$('body').css({'background-image': 'linear-gradient(0deg, rgba(255,255,255,1) 50%, rgba(135,206,235,1) 99%)'});
-				sky = skymode;
+				$('div.cloud img').css({'opacity':'0.8'});
+				// sky = skymode;
 
 			}
 			else if(skymode == "NIGHT")
 			{
 				$('body').css({'background-image': 'linear-gradient(0deg, rgba(13,37,79,1) 0%, rgba(1,19,50,1) 50%)'});
-				sky = skymode;
+				$('div.cloud img').css({'opacity':'0.8'});
+				// sky = skymode;
 
 			}
 			else
@@ -256,7 +298,9 @@
 			if((hour == 5) && (minute == 0))
 			{
 				skyColor("AT");
-				$('img.stars').css({'opacity': '0'});
+				// $('img.stars').css({'opacity': '0'});
+				isNight = false;
+				nightClouds();
 				
 				
 				
@@ -302,14 +346,16 @@
 			else if ((hour == 19) && (minute == 30))
 			{
 				skyColor("NIGHT");
-				$('img.stars').css({'opacity': '0.2'});
+				// $('img.stars').css({'opacity': '1'});
+				isNight = true;
+				nightClouds();
 				
 				
 
 
 			}
 
-			nightClouds();
+			
 
 		}
 
@@ -323,7 +369,9 @@
 			if(hour > 19 || hour < 5)
 			{
 				skyColor("NIGHT");
-				$('img.stars').css({'opacity': '0.2'});
+				// $('img.stars').css({'opacity': '1'});
+				isNight = true;
+				nightClouds();
 			
 				
 			}
@@ -333,22 +381,29 @@
 				if(minute <= 29)
 				{
 					skyColor("AT");
-					$('img.stars').css({'opacity': '0'});
+					// $('img.stars').css({'opacity': '0'});
+					isNight = false;
 					
 				}
 				// Night
 				else
 				{
 					skyColor("NIGHT");
-					$('img.stars').css({'opacity': '0.2'});
+					// $('img.stars').css({'opacity': '1'});
+					isNight = true;
+					nightClouds();
+				
+					
 					
 				}
 			}
 			// Daylight
-			else if (hour > 6)
+			else if (hour > 6 && hour < 18)
 			{
 				skyColor("DAY");
-				$('img.stars').css({'opacity': '0'});
+				// $('img.stars').css({'opacity': '0'});
+				isNight = false;
+				
 				
 			}
 			else if (hour == 6)
@@ -357,14 +412,18 @@
 				if(minute <= 29)
 				{
 					skyColor("CT");
-					$('img.stars').css({'opacity': '0'});
+					// $('img.stars').css({'opacity': '0'});
+					isNight = false;
+					
 					
 				}
 				// Daylight
 				else
 				{
 					skyColor("DAY");
-					$('img.stars').css({'opacity': '0'});
+					// $('img.stars').css({'opacity': '0'});
+					isNight = false;
+					
 					
 				}
 			}
@@ -374,14 +433,16 @@
 				if(minute <= 29)
 				{
 					skyColor("AT");
-					$('img.stars').css({'opacity': '0'});
+					// $('img.stars').css({'opacity': '0'});
+					isNight = false;
 					
 				}
 				// Nautical Twilight
 				else
 				{
 					skyColor("NT");
-					$('img.stars').css({'opacity': '0'});
+					// $('img.stars').css({'opacity': '0'});
+					isNight = false;
 					
 				}
 			}
@@ -391,19 +452,21 @@
 				if(minute <= 29)
 				{
 					skyColor("CT");
-					$('img.stars').css({'opacity': '0'});
+					// $('img.stars').css({'opacity': '0'});
+					isNight = false;
 					
 				}
 				// Nautical Twilight
 				else
 				{
 					skyColor("NT");
-					$('img.stars').css({'opacity': '0'});
+					// $('img.stars').css({'opacity': '0'});
+					isNight = false;
 					
 				}
 			}
 
-			nightClouds();
+			
 
 		}
 
@@ -454,9 +517,9 @@
 			let rotSec = myTime.getSeconds() * 6;
 			let rotMin = myTime.getMinutes() * 6;
 			let rotHour = myTime.getHours() * 30;
-			$('div#seconds').css({'transform': 'rotate(' + rotSec + 'deg)'});
-			$('div#minutes').css({'transform': 'rotate(' + rotMin + 'deg)'});
-			$('div#hours').css({'transform': 'rotate(' + rotHour + 'deg)'});
+			$('img#seconds').css({'transform': 'rotate(' + rotSec + 'deg)'});
+			$('img#minutes').css({'transform': 'rotate(' + rotMin + 'deg)'});
+			$('img#hours').css({'transform': 'rotate(' + rotHour + 'deg)'});
 			
 		}
 
@@ -485,28 +548,34 @@
 			let rotSec = myTime.getSeconds() * 6;
 			let rotMin = myTime.getMinutes() * 6;
 			let rotHour = myTime.getHours() * 30;
-			$('div#seconds').css({'transform': 'rotate(' + rotSec + 'deg)'});
-			$('div#minutes').css({'transform': 'rotate(' + rotMin + 'deg)'});
-			$('div#hours').css({'transform': 'rotate(' + rotHour + 'deg)'});
+			$('img#seconds').css({'transform': 'rotate(' + rotSec + 'deg)'});
+			$('img#minutes').css({'transform': 'rotate(' + rotMin + 'deg)'});
+			$('img#hours').css({'transform': 'rotate(' + rotHour + 'deg)'});
 		}
 
 
 		// Change the speed of time depending on the if you hover over the clock or cloud
 		function changeTime()
 		{
-			$('div.cloud img').mouseenter(function(){
+			$('div.area').mouseenter(function(){
 				clearInterval(movetime);
 				fastTime();
 				moveCloudsSpeed("fast");
-				console.log("something should have happened");
+				fastRandomEvent();
+				console.log("time should move faster");
 
 			}).mouseleave(function(){
 				clearInterval(movetimefast);
 				moveCloudsSpeed("normal");
+
 				regularTime();
+				clearInterval(frenzy);
+				$('div.objects').css({'opacity':'0'});
+				$('div.objects').stop();
+
 			});
 
-			$('.clock').mouseenter(function(){
+			$('img.hourglass').mouseenter(function(){
 				clearInterval(movetime);
 				slowTime();
 				moveCloudsSpeed("slow");
@@ -522,10 +591,10 @@
 
 		function hourglassChange()
 		{
-			$('div.clock').mouseenter(function(){
+			$('img.hourglass').mouseenter(function(){
 				$('img.hourglass').attr("src", "clock_change_white.gif");
 			}).mouseleave(function(){
-				$('img.hourglass').attr("src", "clock_change.png");
+				$('img.hourglass').attr("src", "clock.png");
 
 			});
 		}
@@ -582,12 +651,12 @@
 			if(group1 >= 0)
 			{
 				moveClouds('div#first','div#second');
-				console.log("yellow takes red");
+				
 			}
 			else if(group2 >= 0)
 			{
 				moveClouds('div#second','div#first');
-				console.log("red takes yellow");
+				
 			}
 			else
 			{
@@ -612,30 +681,15 @@
 				y = Math.floor(Math.random() * 4);
 				z = Math.floor(Math.random() * 4);
 
-				if(sky == "NIGHT")
+				if (isNight)
 				{
 					cPic = "cloudN";
 				}
-				else if (sky == "DAY")
+				else
 				{
 					cPic = "cloud";
 				}
-				else if (sky == "AT")
-				{
-					cPic = "cloudA";
-				}
-				else if (sky == "NT")
-				{
-					cPic = "cloudNT";
-				}
-				else if (sky == "CT")
-				{
-					cPic = "cloudCT";
-				}
-				else
-				{
-					console.log("error");
-				}
+
 				
 
 				if(group == "div#first")
@@ -671,42 +725,61 @@
 
 		function nightClouds()
 		{
-			if(sky == "NIGHT")
+			if(isNight)
 			{
 				$('img.cloudpic1').attr({src: "cloudN1.png"});
 				$('img.cloudpic2').attr({src: "cloudN2.png"});
 				$('img.cloudpic3').attr({src: "cloudN3.png"});
 				$('img.cloudpic4').attr({src: "cloudN4.png"});
 			}
-			else if(sky == "DAY")
+			else
 			{
 				$('img.cloudpic1').attr({src: "cloud1.png"});
 				$('img.cloudpic2').attr({src: "cloud2.png"});
 				$('img.cloudpic3').attr({src: "cloud3.png"});
 				$('img.cloudpic4').attr({src: "cloud4.png"});
+
 			}
-			else if(sky == "AT")
-			{
-				$('img.cloudpic1').attr({src: "cloudA1.png"});
-				$('img.cloudpic2').attr({src: "cloudA2.png"});
-				$('img.cloudpic3').attr({src: "cloudA3.png"});
-				$('img.cloudpic4').attr({src: "cloudA4.png"});
-			}
-			else if(sky == "NT")
-			{
-				$('img.cloudpic1').attr({src: "cloudNT1.png"});
-				$('img.cloudpic2').attr({src: "cloudNT2.png"});
-				$('img.cloudpic3').attr({src: "cloudNT3.png"});
-				$('img.cloudpic4').attr({src: "cloudNT4.png"});
-			}
-			else if(sky == "CT")
-			{
-				$('img.cloudpic1').attr({src: "cloudC1.png"});
-				$('img.cloudpic2').attr({src: "cloudC2.png"});
-				$('img.cloudpic3').attr({src: "cloudC3.png"});
-				$('img.cloudpic4').attr({src: "cloudC4.png"});
-			}
+			
 		}
+
+		function fastRandomEvent()
+		{
+			$('div.objects').animate({
+				opacity: "1"
+			}, 10000,function(){
+				$('div#first').stop();
+				$('div#second').stop();
+
+			});
+			// var i;
+			
+
+			// i = Math.floor(Math.random()*2);
+			// choice = objs[i];
+			// console.log(choice);
+			// opac = $(choice).css('opacity');
+			// frenzy = setInterval(flicker, 500);
+
+		}
+
+		// function flicker(pic)
+		// {
+		// 	console.log("fuck");
+		// 	if($(choice).css('opacity') == 0)
+		// 	{
+		// 		console.log("turn on");
+		// 		$(choice).css({'opacity':'1'});
+
+		// 	}
+		// 	else
+		// 	{
+		// 		console.log("turn off");
+		// 		$(choice).css({'opacity':'0'});
+		// 	}
+			
+
+		// }
 
 
 
