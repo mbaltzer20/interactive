@@ -204,18 +204,21 @@
 			border-style: solid;
 			border-color: black;
 			border-width: 0.1pt;
-			left: 20%;
+			
 			background-color: black;
 			color: white;
+			
 
 		}
 
 		button#back{
 			bottom: 5%;
+			left: 20%;
 		}
 
 		button#about{
 			bottom: 50%;
+			left: 20%;
 		}
 
 		div.modal{
@@ -237,6 +240,19 @@
 			margin-right: auto;
 			
 		}
+
+		button#exit{
+			position: absolute;
+			right: 0;
+			padding: 20px;
+			font-family: helvetica;
+			font-size: 0.5em;
+			border-style: none;
+			outline-style: none;
+		}
+
+
+
 
 
 
@@ -283,9 +299,11 @@
 	<div class="area"></div>
 
 	<div class="modal">
+		<button id='exit'>X</button>
 		<p>Time is relative<br>
 		<br>
 		Staring makes time move slower<br>
+		<br>
 		Paying no mind makes time move faster<br>
 		<br>
 		Hover over the clock or clouds to experience the relativity</p>
@@ -859,6 +877,10 @@
 					$('.modal').css({'display': 'none'});
 				}
 			});
+
+			$('button#exit').click(function(){
+				$('.modal').css({'display': 'none'});
+			})
 
 
 
