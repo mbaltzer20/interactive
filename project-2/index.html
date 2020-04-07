@@ -3,10 +3,13 @@
 <head>
 	<title>The Clock</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
 </head>
 <body>
 
 	<style type="text/css">
+
+		
 		body{
 			overflow: hidden;
 			background-color: rgba(13,37,79,1);
@@ -91,13 +94,16 @@
 			width: 10vw;
 			height: 10vh;
 			z-index: 1;
+			display: inline-block;
 		}
 
 		div#bar
 		{
+			position: relative;
 			width: 100%;
 			height: 100vh;
 			background-color: white;
+			z-index: -1;
 		}
 
 
@@ -190,6 +196,52 @@
 			/*background-color: red;*/
 		}
 
+		button.button{
+			position: absolute;
+			font-size: 2em;
+			width: 60%;
+			
+			border-style: solid;
+			border-color: black;
+			border-width: 0.1pt;
+			left: 20%;
+			background-color: black;
+			color: white;
+
+		}
+
+		button#back{
+			bottom: 5%;
+		}
+
+		button#about{
+			bottom: 50%;
+		}
+
+		div.modal{
+			position: relative;
+			background-color: white;
+			width: 70vw;
+			height: 80vh;
+			top: -355vh;
+			left: 20vw;
+			box-shadow: 10px 10px black;
+			font-size: 3em;
+			font-family: 'Lora', serif;
+			overflow: scroll;
+		}
+
+		p{
+			width: 90%;
+			margin-left: auto;
+			margin-right: auto;
+			
+		}
+
+
+
+
+
 
 
 
@@ -201,7 +253,10 @@
 		<img src="seconds.png" class="hand" id="seconds">
 		<img src="minutes.png" class="hand" id="minutes">
 		<img src="hours.png" class="hand" id="hours">
-		<div id="bar"></div>
+		<div id="bar">
+			<button class = "button" id="back" onclick="window.location.href = '../index.html';">&#8592;</button>
+			<button class = "button" id="about">?</button>
+		</div>
 		<!-- <div class="container">time</div> -->
 	</div>
 
@@ -227,6 +282,16 @@
 
 	<div class="area"></div>
 
+	<div class="modal">
+		<p>Time is relative<br>
+		<br>
+		Staring makes time move slower<br>
+		Paying no mind makes time move faster<br>
+		<br>
+		Hover over the clock or clouds to experience the relativity</p>
+
+	</div>
+
 	
 
 	<script type="text/javascript">
@@ -240,7 +305,7 @@
 		var sizes = [40, 60, 70, 50];
 		var pos = [50, 20, 60, 40];
 		var isNight;
-		var objs = $('.fastEvent').get();
+		// var objs = $('.fastEvent').get();
 		var frenzy;
 		var choice;
 		// var sky;
@@ -781,6 +846,24 @@
 
 		// }
 
+		function startAboutWindow(){
+			$('button#about').click(function(){
+				var current = $('.modal').css('display');
+				console.log(current);
+				if(current == "none")
+				{
+					$('.modal').css({'display': 'block'});
+				}
+				else
+				{
+					$('.modal').css({'display': 'none'});
+				}
+			});
+
+
+
+		}
+
 
 
 		$(document).ready(function(){
@@ -788,10 +871,12 @@
 			getDimensions();
 			checkInitialSky(myTime.getHours(), myTime.getMinutes());
 			regularTime();
+
 			changeTime();
 			hourglassChange();
 			placeClouds('div#first');
 			moveCloudsSpeed("normal");
+			startAboutWindow();
 		});
 
 
