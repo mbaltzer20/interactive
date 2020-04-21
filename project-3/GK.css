@@ -1,0 +1,113 @@
+*{
+	font-family: 'Libre Caslon Text', serif;
+}
+
+body{
+
+	margin: 0px;
+	overflow: hidden;
+}
+div.container{
+	position: relative;
+	top: 0px;
+	width: 100vw;
+	height: 100vh;
+	
+
+
+
+}
+
+div.body-text{
+	position: absolute;
+	font-weight: bold;
+
+	font-size: 1.9em;
+
+	/*color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
+	width: 90%;
+	
+	padding: 5%;
+	top: 20%;
+	/*-ms-transform: translateY(-50%);
+	transform: translateY(-50%);*/
+	transform-origin: top left;
+
+}
+
+div.overlay
+{
+	position: absolute;
+	
+	width: 100%;
+	height: 88%;
+	z-index: 0;
+}
+
+@keyframes fire {
+  from {background-color: white;}
+  to {background-color: orange;}
+}
+
+
+
+
+
+.button
+{
+	position: absolute;
+	width: 50%;
+	height: 12%;
+	
+	cursor: pointer;
+	bottom: 0;
+	z-index: 1;
+	
+	
+	
+}
+
+.button#next{
+	right: 0;
+	background-color: gainsboro;
+}
+
+.button#back{
+	left: 0;
+	background-color: grey;
+}
+
+.button#back img{
+	-webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  left: 0;
+}
+
+.arrow{
+	position: absolute;
+	right: 0;
+	height: 100%;
+}
+
+@media only screen and (min-width: 400px){
+	body{
+		background-color: black;
+	}
+	div.container{
+		width: 400px;
+
+		margin: 0 auto;
+		background-color: white;
+		border-style: solid;
+		border-width: 1px;
+		border-color: white;
+
+	}
+	div.body-text{
+		font-size: 2em;
+	}
+
+
+
+}
