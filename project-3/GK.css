@@ -68,6 +68,17 @@ div.overlay
 	
 }
 
+.button#next:active
+{
+	background-color: khaki;
+}
+
+.button#back:active
+{
+	background-color: darkkhaki;
+}
+
+
 .button#next{
 	right: 0;
 	background-color: gainsboro;
