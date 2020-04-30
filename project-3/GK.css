@@ -82,11 +82,20 @@ img.pic{
 	background-color: khaki;
 }
 
+.button#next:focus
+{
+	background-color: khaki;
+}
+
 .button#back:active
 {
 	background-color: darkkhaki;
 }
 
+.button#back:focus
+{
+	background-color: darkkhaki;
+}
 
 .button#next{
 	right: 0;

@@ -25,33 +25,43 @@
 
 	<script type="text/javascript">
 
+		var isPlaying;
 		var index;
 		var text = ["The Golden Key","In the winter time, when deep snow lay on the ground, a poor boy was forced to go out on a sledge to fetch wood.","When he had gathered it together, and packed it, he wished, as he was so frozen with cold, not to go home at once, but to light a fire and warm himself a little.", "So he scraped away the snow, and as he was thus clearing the ground, he found a tiny golden key","Hereupon he thought that where the key was, the lock must be also, and dug in the ground and found an iron chest.","‘If the key does but fit it!’ thought he; ‘no doubt there are precious things in that little box.’","He searched, but no keyhole was there.  At last he discovered one, but so small that it was hardly visible.", "He tried it, and the key fitted it exactly. Then he turned it once round,", "and now we must wait until he has quite unlocked it and opened the lid, and then we shall learn what wonderful things were lying in that box.", ""];
 
 		function nextText(){
 			$(".button#next").click(function(){
+
 				
-				if(index>=0 && index<text.length-1){
-					
-					index += 1;
-					textScene();
-					console.log("index:" + index);
+				if(!isPlaying){
+					if(index>=0 && index<text.length-1)
+					{
+						isPlaying = true;
+
+						index += 1;
+						textScene();
+						console.log("index:" + index);
+					}
+
 				}
 
 			});
 			$(".button#back").click(function(){
 				
 				
-				if(index>0 && index<text.length){
-					
-					index -= 1;
-					$(".body-text").text(text[index]);
-					textReset();
-					console.log("index:" + index);
-				}
-				else if (index == 0)
+				if(!isPlaying)
 				{
-					window.location ="../index.html"
+					if(index>0 && index<text.length){
+						
+						index -= 1;
+						$(".body-text").text(text[index]);
+						textReset();
+						console.log("index:" + index);
+					}
+					else if (index == 0)
+					{
+						window.location ="../index.html"
+					}
 				}
 
 			});
@@ -60,6 +70,10 @@
 
 		function textScene()
 		{
+			$('.button').css({cursor: "not-allowed"});
+			// $('.body-text').stop();
+			// $('.container').stop();
+			// $('.overlay').stop();
 			if (index == 1)
 			{
 				//golden hour
@@ -71,6 +85,8 @@
 					// $(".body-text").css({opacity: 1});
 					$(".body-text").text(text[index]);
 					$(".body-text").css({"color":"white"});
+					isPlaying = false;
+					$('.button').css({cursor: "pointer"});
 					
 				});
 			}
@@ -96,6 +112,8 @@
 					
 					$(".container").css({"backgroundColor": "white", "color": "black"})
 					$(".body-text").css({"color":"black"});;
+					isPlaying = false;
+					$('.button').css({cursor: "pointer"});
 				});
 
 			}
@@ -110,6 +128,8 @@
 				},2000, function(){
 					$(".body-text").css({"color":"black"});
 					$(".body-text").text(text[index]);
+					isPlaying = false;
+					$('.button').css({cursor: "pointer"});
 					
 				});
 				
@@ -126,6 +146,8 @@
 					
 					$(".body-text").text(text[index]);
 					$(".body-text").css({"left":"0", "top":"20%"});
+					isPlaying = false;
+					$('.button').css({cursor: "pointer"});
 				})
 
 
@@ -140,6 +162,8 @@
 				}, 2000, function(){
 					
 					$(".body-text").text(text[index]);
+					isPlaying = false;
+					$('.button').css({cursor: "pointer"});
 				})
 
 			}
@@ -162,7 +186,9 @@
 					
 					$(".container").css({"backgroundColor": "white", "color": "black"});
 					$(".body-text").css({"backgroundColor":"transparent",
-					"color":"black"});
+						"color":"black"});
+					isPlaying = false;
+					$('.button').css({cursor: "pointer"});
 				});
 
 			}
@@ -174,6 +200,8 @@
 				}, 3000, function(){
 					$(".body-text").css({"fontSize":"1.9em"});
 					$(".body-text").text(text[index]);
+					isPlaying = false;
+					$('.button').css({cursor: "pointer"});
 				})
 
 			}
@@ -189,17 +217,23 @@
 						complete: function(){
 						// $(".body-text").css({"transform":"rotate(0)"});
 						$(".body-text").text(text[index]);
+						isPlaying = false;
+						$('.button').css({cursor: "pointer"});
 					}
 					
-					});
+				});
 				
 
 			}
 			else if (index == 9)
 			{
 				$(".overlay").append("<img class='pic'src='loading-final.gif'>");
+				isPlaying = false;
+				$('.button').css({cursor: "pointer"});
 
 			}
+
+
 			
 		}
 
@@ -269,7 +303,7 @@
 			}
 		}
 		
-	
+
 
 
 
