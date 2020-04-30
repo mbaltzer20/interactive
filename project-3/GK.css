@@ -50,6 +50,12 @@ div.overlay
   to {background-color: orange;}
 }
 
+img.pic{
+	position: absolute;
+	height: 100%;
+
+}
+
 
 
 
@@ -58,10 +64,10 @@ div.overlay
 {
 	position: absolute;
 	width: 50%;
-	height: 12%;
+	height: 20%;
 	
 	cursor: pointer;
-	bottom: 0;
+	bottom: 0px;
 	z-index: 1;
 	
 	
@@ -89,11 +95,6 @@ div.overlay
 	background-color: grey;
 }
 
-.button#back img{
-	-webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  left: 0;
-}
 
 .arrow{
 	position: absolute;
@@ -101,12 +102,13 @@ div.overlay
 	height: 100%;
 }
 
-@media only screen and (min-width: 400px){
+@media only screen and (min-width: 500px){
 	body{
 		background-color: black;
 	}
 	div.container{
 		width: 400px;
+		height:100vh;
 
 		margin: 0 auto;
 		background-color: white;
@@ -119,6 +121,13 @@ div.overlay
 		font-size: 2em;
 	}
 
+	.button
+	{
+		height: 12%;
+	}
 
-
-}
+	img.pic{
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
