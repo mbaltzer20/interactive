@@ -9,56 +9,94 @@
 
 		div.big{
 			position: relative;
-			top: 40vh;
-			left: 40vh;
+			width: 90vw;
+			height: 50vh;
+			top: 50vh;
+			left: 50vw;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			
+			/*top: 40vh;*/
+			
 
 		}
 		.dot{
+			
 			position: relative;
 			display: inline-block;
+			width: 200px;
+			/*height: 100%;*/
+			/*padding-bottom: 20%;*/
 			
-			
-			margin: 20px;
+			margin: 0.5%;
 			
 		}
-		div#a:hover{
+		span#a:hover .title{
 			background-color: rgba(0, 183, 255, 1);
 		}
 
-		div#b:hover{
+		span#b:hover .title{
 			background-color: rgba(0, 183, 255, 0.6);
 		}
 
-		div#c:hover{
+		span#c:hover .title{
 			background-color: rgba(0, 183, 255, 0.4);
 		}
 
-		div#d:hover{
+		span#d:hover .title{
 			background-color: rgba(0, 183, 255, 0.2);
 		}
 
-		div#e:hover{
+		span#e:hover .title{
 			background-color: rgba(0, 183, 255, 0);
 		}
 
 		.drop-content {
 			display: none;
 			position: absolute;
-			min-width: 100%;
+			width: 100%;
+			top: 10%;
 			z-index: 1;
+
+			
 			
 		}
 
 		.drop-content a{
-			display: block;
+			/*display: block;*/
 			text-decoration: none;
-			padding-left:25px;
+			
+			line-height: 2em;
+
+
+			text-align: left;
+
+
 
 		}
 
 		span.dot:hover .drop-content{
 			display: block;
 		}
+		span.dot:hover img{
+			opacity: 0;
+		}
+
+		span.dot:hover p{
+			opacity: 0;
+		}
+
+		img{
+			width: 100%;
+			
+			
+		}
+
+		div.title
+		{
+			border-style: solid;
+			border-color: black;
+		}
 
 
 
@@ -67,19 +105,21 @@
 
 
 
-		div.title{
+	/*	div.title{
 			height: 100px;
 			width: 100px;
 			border-style: solid;
 			border-radius: 50%;
 			
 			
-		}
+		}*/
 
 		.title p{
-			position: relative;
+			position: absolute;
+			width: 100%;
 			text-align: center;
-			top: 25px;
+			top: 75px;
+			
 		}
 
 
@@ -88,55 +128,70 @@
 	
 
 	<div class = "big">
-	<span class = "dot" >
-		<div class ="title" id = "a"><p>Level 1</p></div>
-		<div class ="drop-content">
-			<a href="list_1.html">Spread</a>
-			<a href="list_2.html">Bundle</a>
-			<a href="list_3.html">Wave</a>
-			<a href="list_4.html">Lose</a>
-			<a href="list_5.html">Discard</a>
+	<span class = "dot"  id = "a">
+		<div class ="title" >
+			<img  src="circle.svg">
+			<p>Level 1</p>
+			<div class ="drop-content">
+				<a href="list_1.html">Spread</a><br>
+				<a href="list_2.html">Bundle</a><br>
+				<a href="list_3.html">Wave</a><br>
+				<a href="list_4.html">Lose</a><br>
+				<a href="list_5.html">Discard</a><br>
+			</div>
 		</div>
+		
 	</span>
-	<span class = "dot" >
-		<div class ="title" id = "b"><p>Level 2</p></div>
-		<div class ="drop-content">
-			<a href="list_6.html">Navigate</a>
-			<a href="list_7.html">Cycle</a>
-			<a href="list_8.html">Flow</a>
-			<a href="list_9.html">Separate</a>
-			<a href="list_10.html">Cover</a>
+	<span class = "dot" id = "b">
+		<div class ="title" >
+			<img  src="circle.svg">
+			<p>Level 2</p>
+			<div class ="drop-content">
+			<a href="list_6.html">Navigate</a><br>
+			<a href="list_7.html">Cycle</a><br>
+			<a href="list_8.html">Flow</a><br>
+			<a href="list_9.html">Separate</a><br>
+			<a href="list_10.html">Cover</a><br>
 		</div>
+		</div>
+		
 	</span>
-	<span class = "dot" >
-		<div class ="title" id = "c"><p>Level 3</p></div>
-		<div class ="drop-content">
-			<a href="list_11.html">Pile</a>
-			<a href="list_12.html">Contain</a>
-			<a href="list_13.html">Pipe</a>
-			<a href="list_14.html">Change</a>
-			<a href="list_15.html">Process</a>
+	<span class = "dot" id = "c">
+		<div class ="title" >
+			<img  src="circle.svg">
+			<p>Level 3</p>
+			<div class ="drop-content">
+			<a href="list_11.html">Pile</a><br>
+			<a href="list_12.html">Contain</a><br>
+			<a href="list_13.html">Pipe</a><br>
+			<a href="list_14.html">Change</a><br>
+			<a href="list_15.html">Process</a><br>
 		</div>
+		</div>
+		
 	</span>
-	<span class = "dot" >
-		<div class ="title" id = "d"><p>Level 4</p></div>
+	<span class = "dot" id = "d">
+		<div class ="title" ><img  src="circle.svg"><p>Level 4</p>
 		<div class ="drop-content">
-			<a href="list_16.html">Bounce</a>
-			<a href="list_17.html">Dissolve</a>
-			<a href="list_18.html">Vary</a>
-			<a href="list_19.html">Machines</a>
-			<a href="list_20.html">Water</a>
+			<a href="list_16.html">Bounce</a><br>
+			<a href="list_17.html">Dissolve</a><br>
+			<a href="list_18.html">Vary</a><br>
+			<a href="list_19.html">Machines</a><br>
+			<a href="list_20.html">Water</a><br>
 		</div>
+	</div>
+		
 	</span>
-	<span class = "dot" >
-		<div class ="title" id = "e"><p>Level 5</p></div>
+	<span class = "dot" id = "e">
+		<div class ="title" ><img src="circle.svg"><p>Level 5</p>
 		<div class ="drop-content">
-			<a href="list_21.html">Tumble</a>
-			<a href="list_22.html">Transition</a>
-			<a href="list_23.html">Stack</a>
-			<a href="list_24.html">Pull</a>
-			<a href="list_25.html">Reveal</a>
-		</div>
+			<a href="list_21.html">Tumble</a><br>
+			<a href="list_22.html">Transition</a><br>
+			<a href="list_23.html">Stack</a><br>
+			<a href="list_24.html">Pull</a><br>
+			<a href="list_25.html">Reveal</a><br>
+		</div></div>
+		
 	</span>
 	</div>
 
