@@ -36,19 +36,19 @@
 		}
 
 		span#b:hover .title{
-			background-color: rgba(0, 183, 255, 0.6);
+			background-color: rgba(0, 183, 255, 0.8);
 		}
 
 		span#c:hover .title{
-			background-color: rgba(0, 183, 255, 0.4);
+			background-color: rgba(0, 183, 255, 0.6);
 		}
 
 		span#d:hover .title{
-			background-color: rgba(0, 183, 255, 0.2);
+			background-color: rgba(0, 183, 255, 0.4);
 		}
 
 		span#e:hover .title{
-			background-color: rgba(0, 183, 255, 0);
+			background-color: rgba(0, 183, 255, 0.2);
 		}
 
 		.drop-content {
@@ -199,16 +199,31 @@
 
 	<style type="text/css">
 		div.key{
+			display: flex;
 			position: fixed;
-			font-size: 9pt;
+			justify-content: center;
+			align-items: center;
+			font-size: 1vw;
+
 			border:solid;
-			width: 40pt;
-			height: 40pt;
+			min-width: 40pt;
+			min-height: 40pt;
+			width: 4vw;
+			height: 4vw;
 			text-align: center;
+			background-color: white;
+		}
+
+		@media only screen and (max-width: 1200px) {
+			div.key {
+				font-size: 0.8em;
+
+			}
 		}
 
 		p.label{
-			line-height: 20pt;
+			opacity: 0;
+			
 			color: white;
 
 			
@@ -219,8 +234,25 @@
 			right: 0px;
 			border-top-style: none;
 			border-right-style: none;
+			
+
+		}
+
+		div#next:hover{
 			background-color: white;
 
+		}
+		div#previous:hover{
+			background-color: rgba(0, 183, 255, 1);
+
+		}
+
+		div#home:hover{
+			background-color: black;
+		}
+
+		div.key:hover p{
+			opacity: 1;
 		}
 
 		div#next p{
@@ -235,20 +267,24 @@
 			left: 0px;
 			border-top-style: none;
 			border-left-style: none;
-			background-color: rgba(0, 183, 255, 1);
+			
 		}
 		div#home{
 			bottom: 0px;
 			left: 0px;
 			border-bottom-style: none;
 			border-left-style: none;
-			background-color: black;
+			
+		}
+
+		a.box{
+			color: black;
 		}
 
 	</style>
-	<div class = "key" id = "next"><p class ="label">next</p></div>
-	<div class = "key" id = "previous"><p class ="label">previous</p></div>
-	<div class = "key" id = "home"><p class ="label">home</p></div>
+	<a class= "box" href="list_1.html"><div class = "key" id = "next"><p class ="label">next</p></div></a>
+	<a class= "box" href="../index.html"><div class = "key" id = "previous"><p class ="label">previous</p></div></a>
+	<a class= "box" href="index.html"><div class = "key" id = "home"><p class ="label">home</p></div></a>
 
 
 	

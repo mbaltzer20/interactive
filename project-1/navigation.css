@@ -1,114 +1,89 @@
 
 
-			div.container{
-				position: fixed;
-				width: 30px;
-				height: 30px;
-				border-style: solid;
-				background-color: white;
-				border-width: 1.5px;
-				z-index: 1;
-				
-				
-			}
+			div.key{
+				font-family: Geneva;
+			display: flex;
+			position: fixed;
+			justify-content: center;
+			align-items: center;
+			font-size: 1vw;
 
-			div.container:hover{
-				width: 50px;
-				height: 50px;
-				transition: width 0.5s, height 0.5s;
+			border:solid;
+			min-width: 40pt;
+			min-height: 40pt;
+			width: 4vw;
+			height: 4vw;
+			text-align: center;
+			background-color: white;
+			z-index: 1;
+		}
 
-			}
-
-			div.container:hover a.machine{
-				width: 33px;
-				height: 33px;
-				margin: 6.7px;
-				transition: width 0.5s, height 0.5s, margin 0.5s;
+		@media only screen and (max-width: 1200px) {
+			div.key {
+				font-size: 0.8em;
 
 			}
+		}
 
-			div.container:hover a.machine span.label{
-				display:block;
-			}
-
-			span.label{
-				display: none;
-			}
+		p.label{
+			opacity: 0;
+			
+			color: white;
 
 			
+		}
 
-
-			div#home{
-				bottom: 0;
-				left: 0;
-				border-bottom-style: none;
-				border-left-style: none;
-
-			}
-
-			div#next{
-				top:0;
-				right: 0;
-				border-top-style: none;
-				border-right-style: none;
-			}
-
-			div#previous{
-				top:0;
-				left:0;
-				border-top-style: none;
-				border-left-style: none;
-			}
-
-		
-
-			div#previous a:hover{
-				background-color: rgba(0, 183, 255, 1);
-
-			}
-
-
-
-
-
-			div#next a:hover{
-				background-color: white;
-				height: 
-
-			}
-			div#home a:hover{
-				background-color: black;
-
-
-			}
-
-			a.machine{
-				display: inline-block;
-				position: absolute;
-				
-				border-style: solid;
-				border-radius: 50%;
-				border-width: 1.5px;
-				height: 20px;
-				width: 20px;
-			}
-
-			div.container a{
-				padding: 0px;
-				margin: 4px;
-				
-			}
-
-			
+		div#next{
+			top: 0px;
+			right: 0px;
+			border-top-style: none;
+			border-right-style: none;
 			
 
-			a.machine:link{
-				color: black;
-			}
-			a.machine:visited{
-				color: black;
-			}
+		}
 
+		div#next:hover{
+			background-color: white;
+
+		}
+		div#previous:hover{
+			background-color: rgba(0, 183, 255, 1);
+
+		}
+
+		div#home:hover{
+			background-color: black;
+		}
+
+		div.key:hover p{
+			opacity: 1;
+		}
+
+		div#next p{
+			color: black;
+		}
+
+		div#previous p{
+			color: black;
+		}
+		div#previous{
+			top: 0px;
+			left: 0px;
+			border-top-style: none;
+			border-left-style: none;
+			
+		}
+		div#home{
+			bottom: 0px;
+			left: 0px;
+			border-bottom-style: none;
+			border-left-style: none;
+			
+		}
+
+		a.box{
+			color: black;
+		}
 			div.content{
 				border-style: solid;
 				border-color: black;
