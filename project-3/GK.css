@@ -21,8 +21,9 @@ div.container{
 div.body-text{
 	position: absolute;
 	font-weight: bold;
+	text-align: center;
 
-	font-size: 1.9em;
+	font-size: 2.4em;
 
 	/*color: white;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
@@ -34,6 +35,10 @@ div.body-text{
 	transform: translateY(-50%);*/
 	transform-origin: top left;
 
+}
+
+p.details{
+	font-size: 1em;
 }
 
 div.overlay
@@ -129,9 +134,7 @@ img.pic{
 		border-color: white;
 
 	}
-	div.body-text{
-		font-size: 2em;
-	}
+	
 
 	.button
 	{

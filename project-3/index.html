@@ -15,7 +15,7 @@
 
 	</style>
 	<div class = "container">
-		<div class="body-text">The Golden Key</div>
+		<div class="body-text">The Golden Key<p class="details" style='font-size:0.5em'>Grimm's Fairytales</p></div>
 		<div class="button" id="next"><!-- <img class="arrow" src="arrow.png"> --></div>
 		<div class="button" id="back"><!-- <img class="arrow" src="arrow.png"> --></div>
 		<div class="overlay"></div>
@@ -77,15 +77,28 @@
 			if (index == 1)
 			{
 				//golden hour
-				console.log("something should happen");
+
+				
+				
+
+
 				$(".container").animate({
 					backgroundColor:"black",
 					
 				},1000,"linear", function(){
+					$(".overlay").append("<img class='pic'src='loading.gif' style= 'height:auto; top: 20%'>");
+				$(".overlay").css({"opacity": "1"});
+
+					setTimeout(function(){ 
+						$(".pic"). remove();
+						
 					// $(".body-text").css({opacity: 1});
 					$(".body-text").text(text[index]);
-					$(".body-text").css({"color":"white"});
+					$(".body-text").css({"color":"white", "textAlign": "left", "fontSize": "1.9em"});
 					isPlaying = false;
+
+					}, 2000);
+					
 					
 					
 				});
@@ -119,6 +132,7 @@
 			}
 			else if (index == 3)
 			{ 
+				//fire
 				$(".body-text").css({
 					"color":"black"
 				});
@@ -146,17 +160,6 @@
 			else if (index == 4)
 			{
 				// scrape
-				// $(".body-text").animate({
-				// 	"left": "100px",
-				// 	"top":"40%"
-
-				// }, 1000, function(){
-					
-				// 	$(".body-text").text(text[index]);
-				// 	$(".body-text").css({"left":"0", "top":"20%"});
-				// 	isPlaying = false;
-					
-				// })
 
 				$(".overlay").append("<img class='pic'src='scrape.png' style= 'height:auto; top: 20%'>");
 				$('.pic').attr("src", "scrape.gif");
@@ -194,25 +197,43 @@
 			}
 			else if (index == 6){
 				// what's inside
-				$(".overlay").append("<img class='pic'src='Accident.png' style= 'width:100%'>");
-				$(".overlay").css({"opacity": "0"});
+				// $(".overlay").append("<img class='pic'src='Accident.png' style= 'width:100%'>");
+				// $(".overlay").css({"opacity": "0"});
 
-				$(".overlay").animate({
+				// $(".overlay").animate({
 					
-					opacity: "1"
+				// 	opacity: "1"
 					
 					
-				},2000, function(){
-					$(".pic"). remove();
+				// },2000, function(){
+				// 	$(".pic"). remove();
 
 
 
-					$(".body-text").text(text[index]);
+				// 	$(".body-text").text(text[index]);
+					
+				// 	$(".container").css({"backgroundColor": "white", "color": "black"});
+				// 	$(".body-text").css({"backgroundColor":"transparent",
+				// 		"color":"black"});
+				// 	isPlaying = false;
+					
+				// });
+
+				$(".body-text").css({"text-shadow": "-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000"}).animate({
+					color: "white",
+					backgroundColor: "white"
+				},1000, function(){
+					setTimeout(function(){
+						$(".body-text").text(text[index]);
 					
 					$(".container").css({"backgroundColor": "white", "color": "black"});
 					$(".body-text").css({"backgroundColor":"transparent",
-						"color":"black"});
+						"color":"black", "text-shadow": "none"});
 					isPlaying = false;
+					}, 1000);
+					
+					
+					
 					
 				});
 
@@ -252,7 +273,23 @@
 			}
 			else if (index == 9)
 			{
-				$(".overlay").append("<img class='pic'src='loading-final.gif'>");
+				
+				
+
+				$(".body-text").animate({
+					opacity: "0"
+				}, 1000,"linear", function(){
+					$(".overlay").append("<img class='pic'src='loading.gif' style= 'height:auto; top: 20%'>");
+					
+					$(".body-text").text(text[index]);
+					isPlaying = false;
+					
+				})
+
+
+
+
+
 				isPlaying = false;
 				
 
@@ -265,12 +302,16 @@
 		function textReset()
 		{
 			if(index == 0){
+
+				$(".body-text").append("<p class='details' style='font-size:0.5em'>Grimm's Fairytales</p>");
 				$(".container").css({
 					"backgroundColor":"white",
 					"color":"black"
 				});
 
 				$(".body-text").css({
+					"textAlign": "center",
+					"fontSize": "2.4em",
 					"color":"black"
 				});
 
@@ -320,20 +361,27 @@
 			else if(index == 7)
 			{
 				$(".body-text").css({
-					"transform": "rotate(0)"});
+					"transform": "rotate(0)",
+					"opacity": "1"});
 				
 			}
 			else if(index == 8)
 			{
+				$(".body-text").css({
+					
+					"opacity": "1"});
 				$(".pic").remove();
 			}
 		}
+
+		
 		
 
 
 
 
 		$(document).ready(function(){
+
 			index = 0;
 			
 			
