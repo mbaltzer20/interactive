@@ -70,7 +70,7 @@
 
 		function textScene()
 		{
-			$('.button').css({cursor: "not-allowed"});
+			
 			// $('.body-text').stop();
 			// $('.container').stop();
 			// $('.overlay').stop();
@@ -86,7 +86,7 @@
 					$(".body-text").text(text[index]);
 					$(".body-text").css({"color":"white"});
 					isPlaying = false;
-					$('.button').css({cursor: "pointer"});
+					
 					
 				});
 			}
@@ -113,7 +113,7 @@
 					$(".container").css({"backgroundColor": "white", "color": "black"})
 					$(".body-text").css({"color":"black"});;
 					isPlaying = false;
-					$('.button').css({cursor: "pointer"});
+					
 				});
 
 			}
@@ -125,11 +125,19 @@
 				//fire
 				$(".body-text").animate({
 					color: "orange"
-				},2000, function(){
-					$(".body-text").css({"color":"black"});
+				},800, function(){
+					$(".body-text").animate({
+						color: "white",
+						
+						top: "-20%"
+					}, 1500, function(){
+						$(".body-text").css({"color":"black", "top": "20%"});
 					$(".body-text").text(text[index]);
 					isPlaying = false;
-					$('.button').css({cursor: "pointer"});
+
+					})
+					
+					
 					
 				});
 				
@@ -138,32 +146,49 @@
 			else if (index == 4)
 			{
 				// scrape
-				$(".body-text").animate({
-					"left": "100px",
-					"top":"40%"
+				// $(".body-text").animate({
+				// 	"left": "100px",
+				// 	"top":"40%"
 
-				}, 1000, function(){
+				// }, 1000, function(){
 					
+				// 	$(".body-text").text(text[index]);
+				// 	$(".body-text").css({"left":"0", "top":"20%"});
+				// 	isPlaying = false;
+					
+				// })
+
+				$(".overlay").append("<img class='pic'src='scrape.png' style= 'height:auto; top: 20%'>");
+				$('.pic').attr("src", "scrape.gif");
+				$(".overlay").css({"opacity": "1"});
+
+				$(".overlay").animate({
+					
+					opacity: "1"
+					
+					
+				},2000, function(){
+					$('.pic').attr("src", "scrape.png");
+					$(".pic"). remove();
 					$(".body-text").text(text[index]);
-					$(".body-text").css({"left":"0", "top":"20%"});
 					isPlaying = false;
-					$('.button').css({cursor: "pointer"});
-				})
 
 
+			});
 			}
 			else if (index == 5){
 				//iron chest
+				
 
 				$(".body-text").animate({
 					"backgroundColor": "black",
 					"color": "white"
 
-				}, 2000, function(){
+				}, 1000, function(){
 					
 					$(".body-text").text(text[index]);
 					isPlaying = false;
-					$('.button').css({cursor: "pointer"});
+					
 				})
 
 			}
@@ -188,7 +213,7 @@
 					$(".body-text").css({"backgroundColor":"transparent",
 						"color":"black"});
 					isPlaying = false;
-					$('.button').css({cursor: "pointer"});
+					
 				});
 
 			}
@@ -196,12 +221,12 @@
 				// small hardly visible
 
 				$(".body-text").animate({
-					fontSize: "0em"
+					fontSize: "0"
 				}, 3000, function(){
 					$(".body-text").css({"fontSize":"1.9em"});
 					$(".body-text").text(text[index]);
 					isPlaying = false;
-					$('.button').css({cursor: "pointer"});
+					
 				})
 
 			}
@@ -218,7 +243,7 @@
 						// $(".body-text").css({"transform":"rotate(0)"});
 						$(".body-text").text(text[index]);
 						isPlaying = false;
-						$('.button').css({cursor: "pointer"});
+						
 					}
 					
 				});
@@ -229,7 +254,7 @@
 			{
 				$(".overlay").append("<img class='pic'src='loading-final.gif'>");
 				isPlaying = false;
-				$('.button').css({cursor: "pointer"});
+				
 
 			}
 
@@ -271,6 +296,7 @@
 			else if(index == 3)
 			{
 				$(".body-text").css({"left":"0"});
+
 			}
 			else if(index == 4)
 			{
