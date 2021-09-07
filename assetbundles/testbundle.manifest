@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3875035769
+CRC: 2059703968
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4205f005d52ee2eeaa6cef5fe7a9bce3
+    Hash: acf70425d54d0bacea69578ba83fc449
   TypeTreeHash:
     serializedVersion: 2
-    Hash: eb97775800d9734ef7ede7a625084965
+    Hash: c01e032df8fcc9ac6a886a59812c7792
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,11 +25,15 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
 - Class: 74
   Script: {instanceID: 0}
 - Class: 82
   Script: {instanceID: 0}
 - Class: 83
+  Script: {instanceID: 0}
+- Class: 84
   Script: {instanceID: 0}
 - Class: 91
   Script: {instanceID: 0}
@@ -37,8 +41,20 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: 65b645c56a86de24bbacd23d6f8e3fb5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 47f23b1494938084a8c253fd82600833, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ed7c6638afac0ac4488ceed7a6207aa3, type: 3}
 - Class: 115
   Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 328
+  Script: {instanceID: 0}
+- Class: 329
+  Script: {instanceID: 0}
 Assets:
+- Assets/BundledAssets/testbundle/Piece2.asset
+- Assets/BundledAssets/testbundle/Piece 3.asset
 - Assets/BundledAssets/testbundle/Piece.asset
 Dependencies: []
